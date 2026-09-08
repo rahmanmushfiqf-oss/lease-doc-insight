@@ -112,10 +112,6 @@ function Page() {
               </div>
             );
           })}
-
-              </Link>
-            );
-          })}
         </div>
 
 
