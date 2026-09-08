@@ -70,12 +70,10 @@ function Page() {
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
                 {latest.excerpt}
               </p>
-              <p className="mt-6 flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex size-6 items-center justify-center rounded-full bg-foreground text-[10px] text-background">
-                  {latest.author.charAt(0)}
-                </span>
-                {formatDate(latest.date)} · {latest.readTime}
+              <p className="mt-6 text-xs text-muted-foreground">
+                {latest.author} · {formatDate(latest.date)} · {latest.readTime}
               </p>
+
             </div>
           </Link>
         </Container>
