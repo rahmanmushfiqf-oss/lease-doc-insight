@@ -121,6 +121,14 @@ function Page() {
                     BSc Building Surveying, University of Westminster
                   </li>
                 </ul>
+                <Link
+                  to="/authors/$slug"
+                  params={{ slug: "siddique-miah" }}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm text-primary transition-colors hover:text-foreground"
+                >
+                  Read articles by Siddique
+                  <ArrowRight className="size-4" />
+                </Link>
               </div>
             </div>
 
