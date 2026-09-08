@@ -50,7 +50,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
           <p className="text-xs text-white/45">
-            © {new Date().getFullYear()} Leasedrop. All rights reserved.
+            © 2025 Leasedrop. All rights reserved.
           </p>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {legalLinks.map((l) => (
