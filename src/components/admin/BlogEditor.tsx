@@ -21,7 +21,7 @@ import {
   PanelSection,
   Toggle,
 } from "@/components/admin/ui";
-import { hubTopics, type BlogPost, type Status } from "@/lib/content";
+import { authors, hubTopics, type BlogPost, type Status } from "@/lib/content";
 import {
   blocksToText,
   newId,
@@ -175,7 +175,11 @@ export function BlogEditor({ id }: { id?: string }) {
                 />
               </Field>
               <Field label="Author">
-                <AdminInput value={draft.author} onChange={(e) => set("author", e.target.value)} />
+                <AdminSelect
+                  value={draft.author}
+                  onChange={(v) => set("author", v)}
+                  options={Array.from(new Set([...authors.map((a) => a.name), "Editorial", draft.author].filter(Boolean)))}
+                />
               </Field>
               <Field label="Read time" helper="Calculated from the word count on save.">
                 <AdminInput value={readTimeFor(bodyText)} readOnly />
