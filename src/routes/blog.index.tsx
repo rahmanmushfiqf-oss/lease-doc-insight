@@ -84,30 +84,35 @@ function Page() {
           {shown.map((post) => {
             const img = contentImage(post.id);
             return (
-              <Link
-                key={post.id}
-                to="/blog/$slug"
-                params={{ slug: post.slug }}
-                className="group block"
-              >
-                <div className="overflow-hidden rounded-xl border border-border">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    loading="lazy"
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <span className="mt-6 inline-flex rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
-                  {post.category}
-                </span>
-                <h3 className="mt-4 text-2xl font-[490] leading-snug group-hover:text-primary">
-                  {post.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
-                <p className="mt-5 text-xs text-muted-foreground">
-                  {formatDate(post.date)} · {post.readTime}
-                </p>
+              <div key={post.id}>
+                <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block">
+                  <div className="overflow-hidden rounded-xl border border-border">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <span className="mt-6 inline-flex rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    {post.category}
+                  </span>
+                  <h3 className="mt-4 text-2xl font-[490] leading-snug group-hover:text-primary">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {post.excerpt}
+                  </p>
+                </Link>
+                <AuthorByline
+                  name={post.author}
+                  meta={`${formatDate(post.date)} · ${post.readTime}`}
+                  className="mt-5"
+                />
+              </div>
+            );
+          })}
+
               </Link>
             );
           })}
