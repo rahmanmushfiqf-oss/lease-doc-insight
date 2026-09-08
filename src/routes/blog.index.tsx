@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { AuthorByline } from "@/components/resources/AuthorByline";
 import { Container } from "@/components/resources/Prose";
 import { formatDate, publishedBlog } from "@/lib/content";
 import { contentImage } from "@/lib/content-images";
