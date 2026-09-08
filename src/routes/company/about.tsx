@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
 import shorfulImg from "@/assets/dr-shorful-islam.webp.asset.json";
 import siddiqueImg from "@/assets/siddique-miah.webp.asset.json";
@@ -121,6 +122,14 @@ function Page() {
                     BSc Building Surveying, University of Westminster
                   </li>
                 </ul>
+                <Link
+                  to="/authors/$slug"
+                  params={{ slug: "siddique-miah" }}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm text-primary transition-colors hover:text-foreground"
+                >
+                  Read articles by Siddique
+                  <ArrowRight className="size-4" />
+                </Link>
               </div>
             </div>
 
@@ -159,6 +168,14 @@ function Page() {
                     Former global leadership, Wunderman, WPP
                   </li>
                 </ul>
+                <Link
+                  to="/authors/$slug"
+                  params={{ slug: "dr-shorful-islam" }}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm text-primary transition-colors hover:text-foreground"
+                >
+                  Read articles by Shorful
+                  <ArrowRight className="size-4" />
+                </Link>
               </div>
               <img
                 src={shorfulImg.url}

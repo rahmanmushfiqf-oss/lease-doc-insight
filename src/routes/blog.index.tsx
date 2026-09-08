@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { AuthorByline } from "@/components/resources/AuthorByline";
 import { Container } from "@/components/resources/Prose";
 import { formatDate, publishedBlog } from "@/lib/content";
 import { contentImage } from "@/lib/content-images";
@@ -70,12 +71,10 @@ function Page() {
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
                 {latest.excerpt}
               </p>
-              <p className="mt-6 flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex size-6 items-center justify-center rounded-full bg-foreground text-[10px] text-background">
-                  {latest.author.charAt(0)}
-                </span>
-                {formatDate(latest.date)} · {latest.readTime}
+              <p className="mt-6 text-xs text-muted-foreground">
+                {latest.author} · {formatDate(latest.date)} · {latest.readTime}
               </p>
+
             </div>
           </Link>
         </Container>
@@ -86,31 +85,32 @@ function Page() {
           {shown.map((post) => {
             const img = contentImage(post.id);
             return (
-              <Link
-                key={post.id}
-                to="/blog/$slug"
-                params={{ slug: post.slug }}
-                className="group block"
-              >
-                <div className="overflow-hidden rounded-xl border border-border">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    loading="lazy"
-                    className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <span className="mt-6 inline-flex rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
-                  {post.category}
-                </span>
-                <h3 className="mt-4 text-2xl font-[490] leading-snug group-hover:text-primary">
-                  {post.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
-                <p className="mt-5 text-xs text-muted-foreground">
-                  {formatDate(post.date)} · {post.readTime}
-                </p>
-              </Link>
+              <div key={post.id}>
+                <Link to="/blog/$slug" params={{ slug: post.slug }} className="group block">
+                  <div className="overflow-hidden rounded-xl border border-border">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      loading="lazy"
+                      className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <span className="mt-6 inline-flex rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">
+                    {post.category}
+                  </span>
+                  <h3 className="mt-4 text-2xl font-[490] leading-snug group-hover:text-primary">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {post.excerpt}
+                  </p>
+                </Link>
+                <AuthorByline
+                  name={post.author}
+                  meta={`${formatDate(post.date)} · ${post.readTime}`}
+                  className="mt-5"
+                />
+              </div>
             );
           })}
         </div>
