@@ -168,6 +168,14 @@ function Page() {
                     Former global leadership, Wunderman, WPP
                   </li>
                 </ul>
+                <Link
+                  to="/authors/$slug"
+                  params={{ slug: "dr-shorful-islam" }}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm text-primary transition-colors hover:text-foreground"
+                >
+                  Read articles by Shorful
+                  <ArrowRight className="size-4" />
+                </Link>
               </div>
               <img
                 src={shorfulImg.url}
